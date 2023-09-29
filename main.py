@@ -13,6 +13,7 @@ Enter '+' to add mode
 Enter '-' to subtract mode
 Enter '*' to multiply mode
 Enter '/' to divide mode
+Enter '^' to power mode
 Enter '?' to see the options again
 Enter 'quit' to end the program
 """
@@ -23,15 +24,23 @@ while True:
     user_input = input("-> ")
 
     if user_input == "quit":
-        break
+        break        
     elif user_input == "?":
         print(options)
     elif user_input.isnumeric():
+        user_input = float(user_input)
         if mode == "":
-            ans = float(user_input)
-        else: 
-            ans = eval(str(ans) + mode + user_input)
-            mode = ""
+            ans = user_input
+        elif mode == "+":
+            ans += user_input
+        elif mode == "-":
+            ans -= user_input
+        elif mode == "*":
+            ans *= user_input
+        elif mode == "/":
+            ans /= user_input
+        elif mode == "^":
+            ans **= user_input
         print(ans)
     elif user_input in ("+", "-", "*", "/"):
         mode = user_input
